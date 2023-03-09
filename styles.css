@@ -8,6 +8,8 @@ body {
     background-color: #dedede;
 }
 
+/* HEADER STYLING */
+
 header {
     background-color: #bebebe;
     height: 100px;
@@ -32,4 +34,33 @@ header {
 
 #header-nav {
     justify-content: flex-end;
+}
+
+/* NEW BUTTON */
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+#newBtn {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #bebebe;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 20px;
+}
+
+#newBtn:hover {
+    box-shadow: 0px 0px 5px black;
+    transition: 0.2s;
 }
