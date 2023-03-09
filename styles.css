@@ -7,3 +7,29 @@
 body {
     background-color: #dedede;
 }
+
+header {
+    background-color: #bebebe;
+    height: 100px;
+    width: 100vw;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#header-container {
+    display: flex;
+    height: 100%;
+    width: max(1200px, 60%);
+
+} 
+
+.header-el {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+#header-nav {
+    justify-content: flex-end;
+}
