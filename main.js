@@ -1,5 +1,6 @@
 const content = document.getElementById('content')
 const newBtn = document.getElementById('newBtn')
+const loginBtn = document.getElementById('loginBtn')
 
 const bookFactory = (title, author, pages, isRead) => {
     return {title, author, pages, isRead}
@@ -190,7 +191,10 @@ const addBook = (e) => {
     updateGrid()
 }
 
-renderCards()
-
+loginBtn.addEventListener('click', function() {
+    alert('COMING SOON!')
+})
 
 newBtn.onclick = renderForm
+
+renderCards()
