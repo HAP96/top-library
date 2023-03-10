@@ -60,18 +60,9 @@ header {
     margin: 20px;
 }
 
-#newBtn:hover, .cardBtn:hover {
+#newBtn:hover, .cardBtn:hover, #addBtn:hover {
     box-shadow: 0px 0px 5px black;
     transition: 0.2s;
-}
-
-.card-el {
-    height: 200px;
-    width: 300px;
-    border-radius: 5px;
-    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
-    display: flex;
-    flex-direction: column;
 }
 
 #content {
@@ -80,6 +71,17 @@ header {
     justify-items: center;
     grid-gap: 50px;
     margin-top: 20px;
+}
+
+/* CARDS */
+
+.card-el {
+    height: 200px;
+    width: 300px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
 }
 
 .card-title, .card-btns {
@@ -123,4 +125,82 @@ span {
 
 .not-active {
     background-color:#fa969e;
+}
+
+/* FORM */
+
+form {
+    height: 300px;
+    width: 350px;
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
+    border-radius: 5px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#titleDiv, #btnDiv {
+    flex: 0.5;
+    background-color: #bebebe;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+}
+
+#inputDiv {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    width: 90%;
+    margin: 5px;
+    padding: 3px 5px;
+    text-align: center;
+}
+
+label {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#pages {
+    width: 100px;
+}
+
+#addBtn {
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    background-color: #43fa65;
+}
+
+#closeBtn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: none;
+    background: none;
+    color: rgba(0, 0, 0, 0.35);
+}
+
+#closeBtn:hover {
+    color: red;
+    transition: 0.3s;
+}
+
+#titleDiv {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
 }

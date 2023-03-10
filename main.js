@@ -1,25 +1,11 @@
 const content = document.getElementById('content')
+const newBtn = document.getElementById('newBtn')
 
 const bookFactory = (title, author, pages, isRead) => {
     return {title, author, pages, isRead}
 }
 
-const book1 = bookFactory('title1', 'author1', 101, true)
-const book2 = bookFactory('title2', 'author2', 202, false)
-const book3 = bookFactory('title3', 'author3', 303, true)
-const book4 = bookFactory('title4', 'author4', 404, false)
-const book5 = bookFactory('title5', 'author5', 404, false)
-const book6 = bookFactory('title6', 'author6', 404, false)
-const book7 = bookFactory('title7', 'author7', 404, false)
-
 myLibrary = []
-myLibrary.push(book1)
-myLibrary.push(book2)
-myLibrary.push(book3)
-myLibrary.push(book4)
-myLibrary.push(book5)
-myLibrary.push(book6)
-myLibrary.push(book7)
 
 const renderCards = () => {
     for (book of myLibrary) {
@@ -97,4 +83,82 @@ const removeCard = (book) => {
     updateGrid()
 }
 
+const renderForm = () => {
+    content.innerHTML = ''
+
+    const form = document.createElement('form')
+    form.id = 'form'
+    form.name = 'form'
+
+    const titleDiv = document.createElement('div')
+    titleDiv.id = 'titleDiv'
+    const inputDiv = document.createElement('div')
+    inputDiv.id = 'inputDiv'
+    const btnDiv = document.createElement('div')
+    btnDiv.id = 'btnDiv'
+
+    const formTitle = document.createElement('h1')
+    formTitle.classList.add('form-title')
+    formTitle.textContent = 'Add a New Book'
+
+    const closeBtn = document.createElement('button')
+    closeBtn.id = 'closeBtn'
+    closeBtn.innerHTML = `<span class="material-symbols-outlined">close</span>`
+
+    const title = document.createElement('input')
+    title.type = 'text'
+    title.id = 'title'
+    const titleLabel = document.createElement('label')
+    titleLabel.for ='title'
+    titleLabel.textContent = 'Title:'
+
+    const author = document.createElement('input')
+    author.type = 'text'
+    author.id = 'author'
+    const authorLabel = document.createElement('label')
+    authorLabel.for ='author'
+    authorLabel.textContent = 'Author:'
+
+    const pages = document.createElement('input')
+    pages.type = 'number'
+    pages.id = 'pages'
+    const pagesLabel = document.createElement('label')
+    pagesLabel.for = 'pages'
+    pagesLabel.textContent = 'Pages:'
+
+    const addBtn = document.createElement('button')
+    addBtn.id = 'addBtn'
+    addBtn.textContent = 'Add Book'
+
+    titleDiv.appendChild(formTitle)
+    titleDiv.appendChild(closeBtn)
+
+    inputDiv.appendChild(titleLabel)
+    inputDiv.appendChild(title)
+    inputDiv.appendChild(authorLabel)
+    inputDiv.appendChild(author)
+    inputDiv.appendChild(pagesLabel)
+    inputDiv.appendChild(pages)
+    btnDiv.appendChild(addBtn)
+
+    form.appendChild(titleDiv)
+    form.appendChild(inputDiv)
+    form.appendChild(btnDiv)
+
+    content.appendChild(form)
+
+    closeBtn.onclick = closeForm
+}
+
+const closeForm = (e) => {
+    const form = document.forms.form
+    form.reset()
+    e.preventDefault()
+    content.innerHTML = ''
+    updateGrid()
+}
+
 renderCards()
+
+
+newBtn.onclick = renderForm
