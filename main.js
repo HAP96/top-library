@@ -123,6 +123,7 @@ const renderForm = () => {
     const pages = document.createElement('input')
     pages.type = 'number'
     pages.id = 'pages'
+    pages.min = '1'
     const pagesLabel = document.createElement('label')
     pagesLabel.for = 'pages'
     pagesLabel.textContent = 'Pages:'
@@ -166,7 +167,7 @@ const renderForm = () => {
     content.appendChild(form)
 
     closeBtn.onclick = closeForm
-    addBtn.onclick = addBook
+    addBtn.onclick = test
 }
 
 const closeForm = (e) => {
@@ -177,7 +178,36 @@ const closeForm = (e) => {
     updateGrid()
 }
 
-const addBook = (e) => {
+const addBook = () => {
+    const form = document.forms.form
+    const title = form.elements.title.value
+    const author = form.elements.author.value
+    const pages = form.elements.pages.value
+    const isRead = form.elements.isRead.value
+    const bool = (isRead === 'true')
+
+    const book = bookFactory(title, author, pages, bool)
+    myLibrary.push(book)
+    updateGrid()
+
+}
+
+const checkValidity = () => {
+    const form = document.forms.form
+    const title = form.elements.title.value
+    const author = form.elements.author.value
+    const pages = form.elements.pages.value
+
+    if(title == '') {
+        return false
+    } else if (author == ''){
+        return false
+    } else {
+        return true
+    }
+}
+
+const test = (e) => {
     e.preventDefault()
     const form = document.forms.form
     const title = form.elements.title.value
@@ -185,10 +215,14 @@ const addBook = (e) => {
     const pages = form.elements.pages.value
     const isRead = form.elements.isRead.value
     const bool = (isRead === 'true')
-    
-    const book = bookFactory(title, author, pages, bool)
-    myLibrary.push(book)
-    updateGrid()
+
+    if (checkValidity() === false) {
+        alert('PLEASE FILL OUT THE FORM')
+    } else {
+        const book = bookFactory(title, author, pages, bool)
+        myLibrary.push(book)
+        updateGrid()
+    }
 }
 
 loginBtn.addEventListener('click', function() {
