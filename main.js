@@ -126,12 +126,27 @@ const renderForm = () => {
     pagesLabel.for = 'pages'
     pagesLabel.textContent = 'Pages:'
 
+    const isRead = document.createElement('select')
+    isRead.id = 'isRead'
+    const isReadLabel = document.createElement('label')
+    isReadLabel.for = 'isRead'
+    isReadLabel.textContent = 'Status?'
+    const read = document.createElement('option')
+    read.textContent = 'Read'
+    read.value = true
+
+    const notRead = document.createElement('option')
+    notRead.textContent = 'Not Read'
+    notRead.value = false
+
     const addBtn = document.createElement('button')
     addBtn.id = 'addBtn'
     addBtn.textContent = 'Add Book'
 
     titleDiv.appendChild(formTitle)
     titleDiv.appendChild(closeBtn)
+    isRead.appendChild(read)
+    isRead.appendChild(notRead)
 
     inputDiv.appendChild(titleLabel)
     inputDiv.appendChild(title)
@@ -139,6 +154,8 @@ const renderForm = () => {
     inputDiv.appendChild(author)
     inputDiv.appendChild(pagesLabel)
     inputDiv.appendChild(pages)
+    inputDiv.appendChild(isReadLabel)
+    inputDiv.appendChild(isRead)
     btnDiv.appendChild(addBtn)
 
     form.appendChild(titleDiv)
@@ -148,6 +165,7 @@ const renderForm = () => {
     content.appendChild(form)
 
     closeBtn.onclick = closeForm
+    addBtn.onclick = addBook
 }
 
 const closeForm = (e) => {
@@ -155,6 +173,20 @@ const closeForm = (e) => {
     form.reset()
     e.preventDefault()
     content.innerHTML = ''
+    updateGrid()
+}
+
+const addBook = (e) => {
+    e.preventDefault()
+    const form = document.forms.form
+    const title = form.elements.title.value
+    const author = form.elements.author.value
+    const pages = form.elements.pages.value
+    const isRead = form.elements.isRead.value
+    const bool = (isRead === 'true')
+    
+    const book = bookFactory(title, author, pages, bool)
+    myLibrary.push(book)
     updateGrid()
 }
 
